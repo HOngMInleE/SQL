@@ -68,7 +68,6 @@ select * from emp06;
 
 
 --table 변경 방법           CHAR는 고정형 / VARCHAR는 가변형
-alter table emp01
 
 ----컬럼요소를 변경가능 추가 삭제 수정
 --alter table emp01
@@ -84,28 +83,6 @@ alter table emp01
 --
 ----테이블 삭제
 --drop table emp01;
---
---select *
---from emp01;
---
---select *
---from emp02;
---
-----컬럼은 놔두고 값(데이터)만 삭제
---truncate table emp02;
---
-----딕셔너리 뷰 - 내가한일에대한 내역을 볼 수 있다.
-----USEL_xxxx (나의 계정만)
-----ALL_xxxx (권한 위임 받은거)
-----DBA_xxxx (관리자 권한을 가진 계정만)
-----xxxx 대상설정
---
---desc user_tables;
---
---select TABLE_NAME
---from user_tables
---order by tab
-
 
 select * from emp01;
 
@@ -114,12 +91,13 @@ from emo02;
 
 truncate table emp01;
 
-truncate table emp02;   -- emp02 테이블 완전 삭제
+truncate table emp02;   -- truncate : 컬럼은 놔두고 값(데이터)만 삭제
 
--- dictionary view
---USER_xxxx   -- xxxx : 대상 
---ALL_xxxx
---DBA_xxxx
+-- dictionary view      딕셔너리 뷰 - 내가한일에대한 내역을 볼 수 있다.
+-- USER_xxxx (나의 계정만) 
+-- ALL_xxxx (권한 위임 받은거)
+-- DBA_xxxx (관리자 권한을 가진 계정만)
+-- xxxx : 대상 
 
 desc user_tables;
 
