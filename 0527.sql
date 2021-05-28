@@ -287,6 +287,8 @@ create table emp04
     deptno number(2)
 );
 
+desc emp04;
+
 insert into emp04
 values (111, 'DRAKE', 'doctor',1);
 
