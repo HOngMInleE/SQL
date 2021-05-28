@@ -1,31 +1,91 @@
---// 컬럼 검색 방법
---	    select 컬럼명1,컬럼명2,....
---	    from 테이블명;
---// 연산자
---	// 연산자는 select절에서 사용되어야함.
+select table_name
+from user_tables
+order by table_name desc;
 
-select * 
-from emp;
+desc user_constraints;
 
-select * 
-from dept;
+select constraint_name, constraint_type, table_name
+from user_constraints;
 
-select ename, sal, comm, sal * 12, sal * 12 + comm  
-from emp;           -- null = 값이 없는 데이터. 곲하거나 더하면 null이 됨. 
+select ename "사원 이름", dname "부서 이름" , grade "급여 등급"
+from emp , dept, salgrade;
 
-                                        -- nvl : 함수,  comm 을 0으로 바꾼다.  
-select ename, sal, comm, sal * 12, sal * 12 + nvl(comm,0) as 연봉     
-from emp;        --연봉이란 이름으로 바꿔줌. 문자 사이에 공백이 들어가면 ""처리 필수.
+drop table dept01;
+
+drop table emp01;
+
+
+create table dept01
+(
+    deptno number (2) constraint dept01_deptno_pk primary key ,
+    dname varchar2 (14),
+    loc varchar2 (13)
+);
+
+create table emp01
+(
+    empno number(4) constraint emo01_empno_p primary key,
+    ename varchar2(10),
+    job varchar2(9),
+    mgr number(4),
+    hiredate date,
+    sal number(7,2),
+    comm number(7,2),
+    deptno number(2) constraint emp01_deptno_f references dept01(deptno) 
+);
+
+create table salgrade01
+(
+    grade number,
+    losal number,
+    hisal number,
+);
+
+
+desc user_indexes;
+
+desc user_views;
 
 select *
-from dept;  
+from all_indexes;
 
-select deptno 부서번호, dname 부서명, loc 근무지      -- as 는 생략 가능.
-from dept;
+select *
+from all_views;
 
--- select 옵션사용 (가공)
-select DISTINCT deptno 부서번호     -- DISTINCT : 중복제거
-from emp;
+select *
+from dba_indexes;
 
-select DISTINCT job     -- 실제 이 회사에서 하는 job들.
-from emp;
+
+create index emp_ename
+on emp(ename);
+
+select index_name, table_name
+from user_ind_columns
+where table_name in('EMP');
+
+desc user_indexes;
+
+drop index emp_ename;
+
+drop table emp_copy;
+
+create table emp_copy
+as 
+select * from emp;
+
+create view emp_view
+as
+select * from emp;
+
+drop table emp_copy;
+
+drop view emp_view;
+
+select * 
+from user_indexes;
+
+select *
+from user_views;
+
+
+

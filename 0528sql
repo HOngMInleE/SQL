@@ -1,0 +1,130 @@
+-- sql문의 실행 순서입니다
+-- from > where > group by > having > select > order by 순
+
+-- 서브퀴리 
+    -- 메인커리
+select dname    -- 찾고자 하는 컬럼
+from dept
+where deptno = (    -- 서브퀴리     -- 조건문에 조건이 되어줌
+                select deptno
+                from emp
+                where ename = 'SMITH'
+                );
+                
+select ename, sal
+from emp
+where sal = (       -- 서브퀴리가 false 즉, 오류이면 네임퀴리가 실행됨.
+            select max(sal)
+            from dept
+            );
+
+select ename, sal
+from emp
+where sal - max(sal);   -- 그룹함수는 where 절에 사용 할 수 없다
+
+select max(sal)
+from dept;
+
+
+-- 단일행 서브쿼리
+    -- 조회결과가 하나인 형태
+
+
+-- 다중행 서브쿼리
+    -- 조회결과가 여러개인 형태
+    -- in, all, any, some 
+
+select deptno 
+from emp
+where sal >= 3000;
+
+select ename, sal, deptno
+from emp
+where deptno in (               -- in = or 의 개념
+    select deptno
+    from emp
+    where sal >= 3000
+);
+
+select max(sal)
+from emp
+where deptno = 30;
+
+select sal
+from emp
+where deptno = 30;
+
+select ename, sal 
+from emp
+where sal > all (       -- all : 서브퀴리 문이 포함한 값을 모두 포함해서
+    select sal
+    from emp
+    where deptno = 30
+);
+
+select ename, sal 
+from emp
+where sal > any (           -- any : 최소값 / 최소값보다 더 큰 것들이 반환됨
+        select sal
+        from emp
+        where deptno = 30
+)
+order by sal desc;
+
+-- job이 manager인 사람이 속한 부서의 부서번호와 부서명과 지역을 출력하세요
+
+select deptno, dname, loc
+from dept
+where deptno in (       -- '=' 은 단 하나의 값에만 적용되서 오류발생함.
+                select deptno
+                from emp
+                where lower(job) = 'manager'    --lower함수 : 명칭을 소문자로 봔한해줌.
+);
+
+
+-- view의 활용
+    -- 입사일이 가장 빠른 5명을 조회해보자
+
+select rownum, empno, ename, hiredate   --rownum : 가상컬럼 (oracle에서만 제공)
+from emp
+where rownum <= 5
+order by hiredate asc;  -- rownum 이 order by 보다 먼저 실행됨 / 그래서 rownum 이 섞여서 나옴
+
+-- rownum 을 쓰려면 view 테이블을 만들어서 써야함
+
+create view view_hire       -- order by 가 되어진 상태의 테이블을 만들어줌 
+as
+select empno, ename, hiredate
+from emp
+order by hiredate;
+
+select * from view_hire;
+
+select rownum, empno, ename, hiredate       -- * : 컬럼이름을 안적겠다는 조건하에 쓰는 것 
+from view_hire 
+where rownum <= 5;
+
+    -- 입사일이 빠른순으로 2 <= 4 인 사람들은?
+select rownum, empno, ename, hiredate
+from view_hire;
+--where rownum >= 2 and rownum < 4; -- rownum = 조건범위안에 1이 포함되어 있어야함
+--where rownum <                    -- where 절까지 계산하고 rownumID가 부여됨. 
+
+-- inline view (인라인 뷰)
+select rm, empno, ename, hiredate
+from (
+        select rownum rm, v1.*
+        from(
+                select empno, ename, hiredate
+                from emp
+                order by hiredate
+            ) v1
+    )      -- 안에서 생성된 rm 값이 가져오게됨
+where rm >= 2 and rm <= 3;
+
+
+
+
+
+
+

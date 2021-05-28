@@ -25,10 +25,10 @@ create table salgrade01
 );
 
 insert into emp01
-values ('7369', 'SMITH', 'JOB', 7902, '80/12/17', 800, null, 10);
+values (7369, 'SMITH', 'JOB', 7902, '80/12/17', 800, null, 10);
 
 insert into emp01
-values ('7566', 'JONES', 'MANAGER', 7839, '81/04/02', 2975, null, 20);
+values (7566, 'JONES', 'MANAGER', 7839, '81/04/02', 2975, null, 20);
 
 COMMIT;
 rollback;
