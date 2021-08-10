@@ -9,7 +9,11 @@ create table board(
     writedate date default sysdate
 );
 
-create sequence board_seq start with 1 increment by 1;
+create sequence board_seq 
+increment by 1
+start with 1
+nocache
+;
 
 insert into board (num, name, email, pass, title, content)
 values(board_seq.nextval, '성윤정', 'pinksung@nate.com', '1234', '첫방문', '반갑습니다.');
@@ -27,3 +31,5 @@ commit;
 rollback;
 
 delete board where name = '0810';
+
+drop sequence board_seq;
