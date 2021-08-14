@@ -1,0 +1,5 @@
+BoardListAction
+
+ArrayList<BoardBean> list = (ArrayList<BoardBean>) boardDAO.getBoardList();
+	// getBoardList()의 반환타입 ArrayList, 
+
