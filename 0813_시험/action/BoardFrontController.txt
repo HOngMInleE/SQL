@@ -1,0 +1,21 @@
+BoardFrontController
+
+substring // substring : 문자열 - 문자열 함수
+sysout.println ( "BoardFrontController 요청됨 : " + bo)  // bo = "/" 도 포함돼서 호출됨.
+
+
+if () {
+
+	try {
+
+	} catch {
+		out.println(" ****.bo를 불러오는데 문제가 발생하였습니다.")
+		(이하동일)
+	} 
+}
+
+
+
+
+doPost 메소드에 
+	request.setCharacterEncoding("UTF-8"); //추가하기
