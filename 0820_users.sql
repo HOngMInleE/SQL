@@ -5,8 +5,9 @@ create table users (
     role varchar2(10)
 );
 
-drop table users;
-
 select * from users;
+
+insert into users 
+values('test','test1234','testName','testRole');
 
 commit;

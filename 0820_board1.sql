@@ -9,8 +9,10 @@ create table board1 (
 
 COMMIT;
 
-select * from board1;
+select * from board1 order by seq ASC;
 
-delete board1 where cnt = 3;
-delete board1 where seq = 3;
+drop table board1;
 
+update board1
+set title=?, content=?
+where seq = ?;
