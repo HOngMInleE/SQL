@@ -1,10 +1,10 @@
 -----------------board--------------------
 CREATE TABLE "BOARD" 
-   (	"B_NUM" NUMBER(8,0) NOT NULL ENABLE, 
-	"ADM_NUM" VARCHAR2(10 BYTE) NOT NULL ENABLE, 
+   ("B_NUM" NUMBER(8,0) NOT NULL ENABLE, 
+	"B_PICTURE" VARCHAR2(300 BYTE) NOT NULL ENABLE, 
     "B_CATEGORY" VARCHAR2(20 BYTE) NOT NULL ENABLE,
-	"B_TITLE" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
-	"B_CONTENT" VARCHAR2(4000 BYTE) NOT NULL ENABLE, 
+	"B_TITLE" VARCHAR2(2000 BYTE) NOT NULL ENABLE, 
+	"B_CONTENT" long not null enable,
 	"B_READCNT" NUMBER(8,0) DEFAULT 0 NOT NULL ENABLE, 
 	"B_REGDATE" TIMESTAMP (6) DEFAULT SYSDATE NOT NULL ENABLE, 
 	"B_UPDATE" TIMESTAMP (6) DEFAULT SYSDATE NOT NULL ENABLE, 
@@ -22,15 +22,27 @@ CREATE TABLE "BOARD"
   -----------------board Test--------------------
   select * from board order by b_num desc;
   
-  insert into board values( (SELECT NVL(MAX(board.adm_num),0)+1 FROM BOARD),1,'news','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
+  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'magazine','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
+  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'magazine','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
+  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'magazine','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
+  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'news','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
+  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'news','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
+  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'news','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
+  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'concert','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
+  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'concert','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
+  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'concert','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
+  
+  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),'news_KanyeWest','news','Kanye West, 싱글차트 100위권 스물 세 곡 신규 진입','이번 주 차트에서 유독 눈에 띄는 아티스트가 있었으니, 바로 Kanye West입니다. 1년이 넘는 시간 동안 발매를 미루다가 드디어 공개된 Kanye West의 [Donda] 수록곡들이 차트 100위권 안에 들었기 때문이지요. 전체 스물 일곱 곡 중 스물 세 곡이 진입하며 리스너들의 기대 만큼이나 엄청난 성적을 보여주고 있는데요. 인트로이자 스킷 격인 Donda Chant와 보너스 개념인 Ok Ok pt 2, Junya pt 2, Jesus Lord pt 2를 제외한 모든 곡이 100위로 들어왔으니, 사실상 전곡이 100위권에 들어온 셈입니다.',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
+
   
   select * from board order by b_regDate asc;
+  select * from board where b_category = 'news' order by b_regDate asc;
   
   update board set b_category='1', b_title='1', b_content='1', b_update=SYSTIMESTAMP where b_num=2;
   
   delete board where b_num = 2;
   
-  update board set b_readCnt = b_readCnt + 1 where b_num = 2;
+ update board set b_readCnt = b_readCnt + 1 where b_num = 2;
   
   commit; 
   
