@@ -21,37 +21,42 @@ CREATE TABLE "BOARD"
   
   -----------------board Test--------------------
   select * from board order by b_num desc;
-  
-  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'magazine','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
-  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'magazine','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
-  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'magazine','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
-  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'news','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
-  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'news','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
-  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'news','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
-  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'concert','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
-  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'concert','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
-  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'concert','title','content',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
-  
-  insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),'news_KanyeWest','news','Kanye West, 싱글차트 100위권 스물 세 곡 신규 진입','이번 주 차트에서 유독 눈에 띄는 아티스트가 있었으니, 바로 Kanye West입니다. 1년이 넘는 시간 동안 발매를 미루다가 드디어 공개된 Kanye West의 [Donda] 수록곡들이 차트 100위권 안에 들었기 때문이지요. 전체 스물 일곱 곡 중 스물 세 곡이 진입하며 리스너들의 기대 만큼이나 엄청난 성적을 보여주고 있는데요. 인트로이자 스킷 격인 Donda Chant와 보너스 개념인 Ok Ok pt 2, Junya pt 2, Jesus Lord pt 2를 제외한 모든 곡이 100위로 들어왔으니, 사실상 전곡이 100위권에 들어온 셈입니다.',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
+  commit;
 
+insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
+'concert_1.jgp',
+'magazine',
+'Drake와 Migos의 합동 투어가 시작된다',
+'올해의 기회를 놓치면 다시 접하기 힘들법한 엄청난 라인업의 투어 콘서트가 탄생했습니다. 현 힙합씬 최고의 주가를 달리고 있는 래퍼와 그룹이 만났는데요. 바로 Drake와 Migos가 <Aubrey and the Three Amigos>라는 이름의 투어를 진행할 것이라고 합니다. <Aubrey and the Three Amigos> 투어는 오는 7월 솔트레이크 시티에서 시작되어, 다섯 달간의 공연을 진행한 후 11월에 막을 내릴 예정이라고 합니다. "Walk It Talk It"에서의 조합을 실제 콘서트에서 보게 될 줄은 예상치 못했습니다. 올해 미국을 방문 예정이라면, <Aubrey and the Three Amigos> 투어 일정을 참고해보는 건 어떨까요?',
+1,to_timestamp('2021-09-14','yyyy-mm-dd'),to_timestamp('2021-09-14','yyyy-mm-dd'));
+
+
+  
+  
+  
+  
+  
   
   select * from board order by b_regDate asc;
   select * from board where b_category = 'news' order by b_regDate asc;
-  
   update board set b_category='1', b_title='1', b_content='1', b_update=SYSTIMESTAMP where b_num=2;
-  
-  delete board where b_num = 2;
-  
+  delete board where b_num = 1;
  update board set b_readCnt = b_readCnt + 1 where b_num = 2;
+  select DISTINCT b_category from board;
   
   commit; 
   
   drop table board;
   
+  
+  
+  create or replace view playlist_view as
+  select m_id,pl_title
+  from playlist;
+  
   -----------------playlist--------------------
   CREATE TABLE "PLAYLIST" 
    (	"PL_NUM" NUMBER(8,2) NOT NULL ENABLE, 
-	"M_ID" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
 	"MB_ID" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
 	"PL_TITLE" VARCHAR2(40 BYTE) NOT NULL ENABLE, 
 	"PL_INDATE" TIMESTAMP (6) DEFAULT SYSDATE NOT NULL ENABLE, 
@@ -67,10 +72,42 @@ CREATE TABLE "BOARD"
   TABLESPACE "SYSTEM" ;
   
   -----------------playlist Test--------------------
+  
   select * from playlist;
+  commit;
+  rollback;
+  drop table playlist;
+  
+  insert into playlist values((SELECT NVL(MAX(playlist.pl_num), 0)+1 FROM playlist),'user','title',to_timestamp(sysdate, 'YYYY-MM-DD'));
+  
+  
+  CREATE TABLE "1_1"
+   	("PL_NUM" NUMBER(8,2),
+    "M_ID" NUMBER(8,2));
+  
+  select count(*) from "user_한글이 최고야_12";
+  select * from "user_12";
+  insert into "1_1" values(1,'1');
+  drop table "user_12";
+  
+  select * 
+  from music
+  where music.m_id in (select m_id from "user_12");
+  
+ delete "user_12" where m_id = 1;
 
-    commit;
-    
+  commit;
+  
+  CREATE OR REPLACE FORCE VIEW plylst_456 ("MB_ID") AS 
+    select MB_ID
+    from MEMBER;
+      
+      select * from plylst_456;
+      
+insert into plylst_456("MB_ID") values ('5'); 
+
+drop view plylst_456;
+  
     -----------music--------------------------
 
 CREATE TABLE "MUSIC" 
@@ -140,6 +177,12 @@ commit;
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "SYSTEM" ;
   
+  
+  drop table member;
+  
+  commit;
+  
+  select * from member;
   -----------------admin--------------------
     CREATE TABLE "ADMIN" 
    (	"ADM_NUM" VARCHAR2(10 BYTE) NOT NULL ENABLE, 
