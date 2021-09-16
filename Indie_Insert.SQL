@@ -1,5 +1,5 @@
 -----------------------------------Member-----------------------------------
-insert into member values((SELECT NVL(MAX(member.mb_num),0)+1 FROM member),'test','1234','test@test.com','456','test_addr1','test_addr2','12345678',to_timestamp('2021-09-07','yyyy-mm-dd'));
+insert into member values((SELECT NVL(MAX(member.mb_num),0)+1 FROM member),'test','1234','name','test@test.com','456','test_addr1','test_addr2','12345678',to_timestamp('2021-09-07','yyyy-mm-dd'));
 
 -----------------------------------Board-----------------------------------
 

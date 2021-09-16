@@ -54,6 +54,16 @@ insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
 insert into plylst_456("MB_ID") values ('5'); 
 drop view plylst_456;
   
+  
+  insert into playlist values((SELECT NVL(MAX(pl_num), 0)+1 FROM playlist),'123','title',to_timestamp(sysdate, 'YYYY-MM-DD'));
+rollback;
+commit;
+
+select pl_num from playlist order by pl_num desc;
+
+select max(pl_num) from playlist;
+
+create table "test_5" ("PL_NUM" NUMBER(8,2),"M_id" NUMBER(8,2));
   -----------music Test --------------------------
 select * from music;
 drop table music;
