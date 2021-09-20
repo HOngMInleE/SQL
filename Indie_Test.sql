@@ -29,6 +29,7 @@ insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
   rollback;
   drop table playlist;
   
+  select * from music where music.m_id in (select m_id from "test_1");
   
   insert into playlist values((SELECT NVL(MAX(playlist.pl_num), 0)+1 FROM playlist),'user','title',to_timestamp(sysdate, 'YYYY-MM-DD'));
   
@@ -43,7 +44,7 @@ insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
   
   select * from music where music.m_id in (select m_id from "user_12");
   
- delete "user_12" where m_id = 1;
+ delete "test_1" where m_id = 1;
   
   CREATE OR REPLACE FORCE VIEW plylst_456 ("MB_ID") AS 
   select MB_ID

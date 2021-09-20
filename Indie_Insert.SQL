@@ -1,11 +1,13 @@
 -----------------------------------Member-----------------------------------
-insert into member values((SELECT NVL(MAX(member.mb_num),0)+1 FROM member),'test','1234','name','test@test.com','456','test_addr1','test_addr2','12345678',to_timestamp('2021-09-07','yyyy-mm-dd'));
+insert into member values((SELECT NVL(MAX(member.mb_num),0)+1 FROM member),'test','1234','name','test@test.com','456','test_addr','12345678',to_timestamp('2021-09-07','yyyy-mm-dd'));
 
+-----------------------------------Admin-----------------------------------
+insert into ADMIN values((SELECT NVL(MAX(ADMIN.ADM_NUM),0)+1 FROM ADMIN),'test','1234','test@test.com',456);
 -----------------------------------Board-----------------------------------
 
-insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),'0913_KanyeWest.jpg','concert','Kanye West, 싱글차트 100위권 스물 세 곡 신규 진입','이번 주 차트에서 유독 눈에 띄는 아티스트가 있었으니, 바로 Kanye West입니다. 1년이 넘는 시간 동안 발매를 미루다가 드디어 공개된 Kanye West의 [Donda] 수록곡들이 차트 100위권 안에 들었기 때문이지요. 전체 스물 일곱 곡 중 스물 세 곡이 진입하며 리스너들의 기대 만큼이나 엄청난 성적을 보여주고 있는데요. 인트로이자 스킷 격인 Donda Chant와 보너스 개념인 [Ok Ok pt 2], [Junya pt 2, Jesus Lord pt 2]를 제외한 모든 곡이 100위로 들어왔으니, 사실상 전곡이 100위권에 들어온 셈입니다.',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
+insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,'0913_KanyeWest.jpg','concert','Kanye West, 싱글차트 100위권 스물 세 곡 신규 진입','이번 주 차트에서 유독 눈에 띄는 아티스트가 있었으니, 바로 Kanye West입니다. 1년이 넘는 시간 동안 발매를 미루다가 드디어 공개된 Kanye West의 [Donda] 수록곡들이 차트 100위권 안에 들었기 때문이지요. 전체 스물 일곱 곡 중 스물 세 곡이 진입하며 리스너들의 기대 만큼이나 엄청난 성적을 보여주고 있는데요. 인트로이자 스킷 격인 Donda Chant와 보너스 개념인 [Ok Ok pt 2], [Junya pt 2, Jesus Lord pt 2]를 제외한 모든 곡이 100위로 들어왔으니, 사실상 전곡이 100위권에 들어온 셈입니다.',1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
 
-insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
+insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,
 'FrankOcean_1.jpg',
 'magazine',
 '프랭크 오션, "요즘 탐구하고 있는 사운드는..."',
@@ -15,7 +17,7 @@ insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
 이후 앨범 작업에 관한 진행도에 대한 질문을 받자, 프랭크 오션은 "언제나 음악을 매만지고 있다"는 모호한 답변을 제공했다. 어쩌면, 프랭크 오션의 새 앨범이 칸예 웨스트(Kanye West)의 지독한 [Jesus Is King]보다 일찍 나오게 되는 건 아닐까?',
 1,to_timestamp('2021-09-07','yyyy-mm-dd'),to_timestamp('2021-09-07','yyyy-mm-dd'));
 
-insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
+insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,
 'Blonde_1.jpg',
 'magazine',
 'Frank Ocean, 새 앨범 [Blonde] 발매',
@@ -24,7 +26,7 @@ insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
 총 17트랙으로 구성된 [Blonde]는 현재 애플 뮤직에서 감상할 수 있습니다. 다음은 [Blonde]의 트랙리스트 및 관련 이미지들입니다. (앨범의 공식 제목이 Blonde인지 Blond인지에 관해서는 아직 명확한 설명이 없기에 일단 애플 뮤직에 표기된 Blonde로 표기하였습니다)',
 1,to_timestamp('2021-09-14','yyyy-mm-dd'),to_timestamp('2021-09-14','yyyy-mm-dd'));
 
-insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
+insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,
 'concert_1.jpg',
 'concert',
 'Drake와 Migos의 합동 투어가 시작된다',
@@ -32,14 +34,14 @@ insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
 1,to_timestamp('2021-09-14','yyyy-mm-dd'),to_timestamp('2021-09-14','yyyy-mm-dd'));
 
 
-insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
+insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,
 'news_1.jpg',
 'news',
 'Drake, 열심히 작업 중임을 알리다',
 '지난번, 한 농구경기 휴식 시간 중 짧은 인사를 통해 "새 앨범은 고향인 Toronto를 위한 앨범이 될 것"이라고 전했던 Drake가 정말로 앨범 작업에 한창인 것으로 보입니다. Drake가 인스타그램에 파티도, 시상식도 아닌 일에 열중하는 본인의 사진을 올렸기 때문입니다. ',
 1,to_timestamp('2021-09-4','yyyy-mm-dd'),to_timestamp('2021-09-5','yyyy-mm-dd'));
 
-insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
+insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,
 'concert_2.jpg',
 'concert',
 '빌리 아일리시, 8월 두 번째 내한 공연 예정',
@@ -47,42 +49,42 @@ insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
 1,to_timestamp('2021-08-4','yyyy-mm-dd'),to_timestamp('2021-08-5','yyyy-mm-dd'));
 
 
-insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
+insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,
 'concert_3.jpg',
 'concert',
 '릴 펌, 첫 내한 공연 셋리스트 공개',
 '다가오는 5월 26일 진행되는 릴 펌(Lil Pump)의 첫 내한 공연의 공식 셋리스트가 공개되었다. 금일 공개된 자료에 따르면, 릴펌은 총 17곡의 트랙을 한국 팬들을 위해 들려줄 예정이며, 여기에는 “Gucci Gang”, "Esskeetit", "Be Like Me", "Boss" 등의 솔로 히트 넘버들은 물론 칸예 웨스트(Kanye West)와 함께한 “I Love It”까지 포함된 것으로 알려졌다. 짧은 커리어에도 수많은 히트곡을 쌓아온 릴펌이기에 이번 내한 공연에는 더욱 많은 관심이 쏠릴 것으로 기대되고 있다. 한편, 세계적인 힙합 스타인 릴 펌의 첫 내한 공연이자 최정상급의 국내 뮤지션들이 총출동하는 JBL 2019 월드 힙합 페스티벌(JBL 2019 World Hiphop Festival)은 5월 25일, 26일 양일에 거쳐 진행된다. 이외에도 첫날인 5월 25일 토요일에는 스윙스, 영비, 기리보이, 키드밀리, 그레이, 우원재, 딥플로우, 오디, 큐엠, 넉살, 윤미래, 타이거JK, 비지, 어글리덕이 출연하며, 26일 일요일에는 릴펌과 더불어 다이나믹 듀오, 리듬파워, 제시, 더콰이엇, DJ 소다가 출연한다.',
 1,to_timestamp('2021-08-4','yyyy-mm-dd'),to_timestamp('2021-08-5','yyyy-mm-dd'));
 
-insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
+insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,
 'concert_4.jpg',
 'concert',
 '레지 스노우, 9월 내한 공연 예정',
 '오는 9월 7일로 예정됐던 위즈 칼리파(Wiz Khalifa), 조이 배대스(Joey Bada$$), 레지 스노우(Rejjie Snow)의 내한공연이 레지 스노우 단독 공연으로 변경되어 진행된다. 공연 내용의 변경과 함께, 올림픽공원 체조경기장에서 홍대 웨스트브릿지 with KT 5G 라이브홀로 장소를 옮겨 진행될 예정이라고 한다. 레지 스노우의 단독 내한 공연은 2019년 9월 7일 오후 7시 진행될 예정이다. 가격은 예매 33,000원, 현장판매 44,000원이며, 오는 8월 29일 낮 12시부터 공식 예매처인 인터파크에서 예매가 가능하다고 한다. 기존 공연의 티켓을 자동적으로 예매 취소되며, 배송료를 포함한 전액이 환불될 예정이다.',
 1,to_timestamp('2021-08-4','yyyy-mm-dd'),to_timestamp('2021-08-5','yyyy-mm-dd'));
 
-insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
+insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,
 'news_2.jpg',
 'news',
 '칸예 웨스트 [DONDA], 이번 주 발매 예정?',
 '1년 전과는 사뭇 다른 분위기의 예고. 딱 1년 전에도 비슷한 헤드라인이 외신을 휩쓸었던 바 있지만, 이번에는 어쩐지 분위기가 조금 다르다. 며칠 전 라스베가스에서 진행된 비밀 리스닝 파티에 이어, 칸예 웨스트(Kanye West)의 열 번째 스튜디오 앨범 [DONDA]에 관한 정보가 끊임없이 쏟아지고 있다. 첫째로, 지난 토요일 칸예 웨스트와 함께 직접 앨범을 감상한 동료 저스틴 라보이(Justin Laboy)는 트위터 계정을 통해 “이번 주에 (앨범이) 발매되고 나면, 한동안 다른 것들은 거들떠보지도 않을 거다”라며 [DONDA]의 이번 주 발매를 암시했다.',
 1,to_timestamp('2021-08-4','yyyy-mm-dd'),to_timestamp('2021-08-5','yyyy-mm-dd'));
 
-insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
+insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,
 'news_3.jpg',
 'news',
 '타일러 더 크리에이터, 신보 [CALL ME IF YOU GET LOST] 발매일과 커버 아트 공개',
 'IGOR] 이후 2년 1개월 만의 신보. 타일러 더 크리에이터(Tyler, The Creator)가 여섯 번째 스튜디오 앨범 [CALL ME IF YOU GET LOST]의 발매일과 커버 아트를 공개했다. [CALL ME IF YOU GET LOST]는 오는 25일(금요일) 공개될 예정이며, 이는 전작 [IGOR] 이후 약 2년 1개월 만의 복귀다. 발매일과 커버 아트의 공개와 함께, 타일러 더 크리에이터는 골프 왱(GOLF WANG) 홈페이지를 통해 [CALL ME IF YOU GET LOST]의 피지컬 예약 판매를 시작했다. 현재 골프 왱 홈페이지에서 본작의 CD, 카세트 등과 머천다이즈를 예약 구매할 수 있다.',
 1,to_timestamp('2021-08-4','yyyy-mm-dd'),to_timestamp('2021-08-5','yyyy-mm-dd'));
 
-insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
+insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,
 'magazine_3.jpg',
 'magazine',
 '빌리 아일리시, “내 음악이 어딜 봐서 팝 음악이야?”',
 'GQ와의 인터뷰를 진행한 빌리 아일리시(Billie Eilish)는 타일러 더 크리에이터의 발언에 적극적으로 동의하는 모습을 보였다. 그녀는 타일러 더 크리에이터가 했던 발언에 적극적으로 동의하며, 역시 특정 장르에 규정당하는 본인의 입장을 털어놓았다. 내가 백인 십대 여성 뮤지션이라서 내 음악이 팝이래. 내 음악이 어딜 봐서 팝이야? 내 음악의 어떤 부분이 팝처럼 들리는 건데? ',
 1,to_timestamp('2021-09-15','yyyy-mm-dd'),to_timestamp('2021-09-15','yyyy-mm-dd'));
 
-insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),
+insert into board values((SELECT NVL(MAX(board.b_num),0)+1 FROM BOARD),1,
 'magazine_4.jpg',
 'magazine',
 '빌리 아일리시, “드레이크가 문자했어, 근데 그게 어때서?”',
